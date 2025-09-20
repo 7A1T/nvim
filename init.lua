@@ -30,7 +30,6 @@ require("lazy").setup({
 		require("plugins.dap"),
 		require("plugins.testing"),
 		require("plugins.go-templ"),
-		require("plugins.rest"),
 		require("plugins.database"),
 	},
 })
