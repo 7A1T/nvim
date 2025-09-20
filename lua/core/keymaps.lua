@@ -225,11 +225,3 @@ vim.keymap.set("n", "<leader>dbu", "<cmd>DBUIToggle<cr>", { desc = "Database: To
 vim.keymap.set("n", "<leader>dbf", "<cmd>DBUIFindBuffer<cr>", { desc = "Database: Find Buffer" })
 vim.keymap.set("n", "<leader>dbr", "<cmd>DBUIRenameBuffer<cr>", { desc = "Database: Rename Buffer" })
 vim.keymap.set("n", "<leader>dbl", "<cmd>DBUILastQueryInfo<cr>", { desc = "Database: Last Query Info" })
-
--- ===================================================================
--- TMUX nav (tmux integration)
--- ===================================================================
-vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "window left" })
-vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "window right" })
-vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "window down" })
-vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "window up" })
