@@ -150,12 +150,12 @@ vim.keymap.set("n", "<leader>trw", function()
 end, { desc = "Test: Toggle Watch" })
 
 -- ===================================================================
--- NEO-TREE (File Explorer)
+-- Nvim-tree(File Explorer)
 -- ===================================================================
-vim.keymap.set("n", "<leader>e", ":Neotree toggle position=left<CR>", { desc = "Neo-tree: Toggle file explorer" })
-vim.keymap.set("n", "<leader>ngs", ":Neotree float git_status<CR>", { desc = "Neo-tree: Open git status" })
-vim.keymap.set("n", "\\", ":Neotree reveal<CR>", { desc = "Neo-tree: Reveal current file" })
-
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {
+	silent = true,
+	desc = "NvimTree: Toggle file explorer",
+})
 -- ===================================================================
 -- COMMENT.NVIM
 -- ===================================================================
