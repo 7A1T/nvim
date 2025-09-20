@@ -46,10 +46,6 @@ return {
 		end,
 	},
 	{
-		"christoomey/vim-tmux-navigator",
-		lazy = false,
-	},
-	{
 		"andythigpen/nvim-coverage",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
