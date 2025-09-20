@@ -1,7 +1,6 @@
 return {
 	"akinsho/bufferline.nvim",
 	dependencies = {
-		"moll/vim-bbye",
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
@@ -12,7 +11,9 @@ return {
 				style_preset = bufferline.style_preset.minimal,
 				themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
 				numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-				close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
+				close_command = function()
+					require("Snacks").bufdelete()
+				end, -- can be a string | function, see "Mouse actions"
 				right_mouse_command = nil,
 				left_mouse_command = nil,
 				middle_mouse_command = nil,

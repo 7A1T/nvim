@@ -3,6 +3,9 @@ return {
 	{
 		-- Hints keybinds
 		"folke/which-key.nvim",
+		opts = {
+			preset = "helix",
+		},
 	},
 	{
 		-- Powerful Git integration for Vim
@@ -39,13 +42,6 @@ return {
 	},
 	{ "echasnovski/mini.nvim", version = false },
 	{
-		"akinsho/toggleterm.nvim",
-		version = "*",
-		config = function()
-			require("toggleterm").setup()
-		end,
-	},
-	{
 		"andythigpen/nvim-coverage",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -58,6 +54,16 @@ return {
 					},
 				},
 			})
+		end,
+	},
+	{
+		-- Find and replace across project
+		"nvim-pack/nvim-spectre",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("spectre").setup()
 		end,
 	},
 }
