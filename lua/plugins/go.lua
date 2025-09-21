@@ -18,7 +18,7 @@ return {
 		verbose_tests = true, -- add verbose flag to tests
 		run_in_floaterm = false, -- run in built-in terminal
 		trouble = true, -- enable trouble integration
-		luasnip = true, -- enable luasnip
+		luasnip = false, -- disable luasnip (using blink.cmp snippets)
 		lsp_keymaps = false, -- disable default lsp keymaps (we'll define our own)
 		lsp_codelens = true, -- enable codelens
 		diagnostic = { -- diagnostic options
@@ -35,6 +35,7 @@ return {
 		},
 		gopls_cmd = nil, -- use default gopls
 		gopls_remote_auto = true,
+		lsp_cfg = true,
 	},
 	config = function(_, opts)
 		require("go").setup(opts)
@@ -50,13 +51,13 @@ return {
 		})
 
 		-- Go-specific keymaps (only active for Go files)
-		local function go_keymap(mode, lhs, rhs, desc)
-			vim.keymap.set(mode, lhs, rhs, { buffer = true, desc = "Go: " .. desc })
-		end
-
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = "go",
-			callback = function()
+			callback = function(ev)
+				local function go_keymap(mode, lhs, rhs, desc)
+					vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf, desc = "Go: " .. desc })
+				end
+
 				-- Code generation and manipulation
 				go_keymap("n", "<leader>cgs", "<cmd>GoFillStruct<cr>", "Fill struct")
 				go_keymap("n", "<leader>cge", "<cmd>GoIfErr<cr>", "Add if err")
@@ -114,7 +115,6 @@ return {
 			end,
 		})
 	end,
-	event = { "CmdlineEnter" },
 	ft = { "go", "gomod" },
 	build = ':lua require("go.install").update_all_sync()',
 }

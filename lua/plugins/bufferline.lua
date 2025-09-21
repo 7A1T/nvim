@@ -8,11 +8,12 @@ return {
 		bufferline.setup({
 			options = {
 				mode = "buffers", -- set to "tabs" to only show tabpages instead
+				scope = "tabs", -- show only buffers in current tab
 				style_preset = bufferline.style_preset.minimal,
 				themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
 				numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
 				close_command = function()
-					require("Snacks").bufdelete()
+					require("snacks").bufdelete()
 				end, -- can be a string | function, see "Mouse actions"
 				right_mouse_command = nil,
 				left_mouse_command = nil,
@@ -106,5 +107,19 @@ return {
 				},
 			},
 		})
+
+		-- Buffer navigation keymaps
+		vim.keymap.set(
+			"n",
+			"<Tab>",
+			":BufferLineCycleNext<CR>",
+			{ noremap = true, silent = true, desc = "Next buffer" }
+		)
+		vim.keymap.set(
+			"n",
+			"<S-Tab>",
+			":BufferLineCyclePrev<CR>",
+			{ noremap = true, silent = true, desc = "Previous buffer" }
+		)
 	end,
 }
