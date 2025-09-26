@@ -10,7 +10,7 @@ return {
 		dashboard = { enabled = true }, -- homescreen
 		debug = { enabled = false }, -- lua config debug info
 		dim = { enabled = true }, -- dim surrounding code
-		explorer = { enabled = true }, -- file explorer (picker)
+		explorer = { enabled = false }, -- file explorer (picker)
 		git = { enabled = true }, -- git show git blame_line
 		gitbrowse = { enabled = true }, -- open file in git[hub|lab]
 		image = { enabled = false }, -- image viewer
@@ -50,13 +50,13 @@ return {
 			end,
 			desc = "Smart Find Files",
 		},
-		{
-			"<leader>e",
-			function()
-				Snacks.explorer()
-			end,
-			desc = "File Explorer",
-		},
+		-- {
+		-- 	"<leader>e",
+		-- 	function()
+		-- 		Snacks.explorer()
+		-- 	end,
+		-- 	desc = "File Explorer",
+		-- },
 
 		-- Find operations
 		{

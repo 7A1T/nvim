@@ -33,7 +33,6 @@ return {
 		-- Detect tabstop and shiftwidth automatically
 		"tpope/vim-sleuth",
 	},
-	{ "echasnovski/mini.nvim", version = false },
 	{
 		"andythigpen/nvim-coverage",
 		dependencies = {
