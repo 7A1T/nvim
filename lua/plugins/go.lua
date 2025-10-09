@@ -8,10 +8,10 @@ return {
 	opts = {
 		goimports = "gopls", -- use gopls for goimports (faster)
 		fillstruct = "gopls", -- use gopls for fillstruct
-		dap_debug = true, -- enable dap debug
-		dap_debug_keymap = false, -- disable default dap keymaps (we'll define our own)
-		dap_debug_gui = true, -- enable dap-ui
-		dap_debug_vt = true, -- enable dap virtual text
+		-- dap_debug = true, -- enable dap debug
+		-- dap_debug_keymap = false, -- disable default dap keymaps (we'll define our own)
+		-- dap_debug_gui = true, -- enable dap-ui
+		-- dap_debug_vt = true, -- enable dap virtual text
 		build_tags = "", -- set build tags
 		textobjects = true, -- enable textobjects
 		test_runner = "go", -- richgo, go test, richgo, dlv, ginkgo
@@ -81,9 +81,9 @@ return {
 				go_keymap("n", "<leader>cbR", "<cmd>GoRestart<cr>", "Restart")
 
 				-- Debugging
-				go_keymap("n", "<leader>cdt", "<cmd>GoDebug -t<cr>", "Debug test")
-				go_keymap("n", "<leader>cdr", "<cmd>GoDebug<cr>", "Debug")
-				go_keymap("n", "<leader>cds", "<cmd>GoDbgStop<cr>", "Debug stop")
+				-- go_keymap("n", "<leader>cdt", "<cmd>GoDebug -t<cr>", "Debug test")
+				-- go_keymap("n", "<leader>cdr", "<cmd>GoDebug<cr>", "Debug")
+				-- go_keymap("n", "<leader>cds", "<cmd>GoDbgStop<cr>", "Debug stop")
 
 				-- Go tools
 				go_keymap("n", "<leader>cmi", "<cmd>GoModInit<cr>", "Mod init")

@@ -25,9 +25,7 @@ return {
 	{
 		-- High-performance color highlighter
 		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
+		opts = {},
 	},
 	{
 		-- Detect tabstop and shiftwidth automatically
@@ -57,8 +55,6 @@ return {
 		keys = {
 			{ "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', desc = "Toggle Spectre" },
 		},
-		config = function()
-			require("spectre").setup()
-		end,
+		opts = {},
 	},
 }

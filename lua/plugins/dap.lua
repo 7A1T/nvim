@@ -13,14 +13,62 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader>dB", function() require("dap").toggle_breakpoint() end, desc = "DAP: Toggle Breakpoint" },
-			{ "<leader>dc", function() require("dap").continue() end, desc = "DAP: Continue" },
-			{ "<leader>ds", function() require("dap").step_over() end, desc = "DAP: Step Over" },
-			{ "<leader>di", function() require("dap").step_into() end, desc = "DAP: Step Into" },
-			{ "<leader>do", function() require("dap").step_out() end, desc = "DAP: Step Out" },
-			{ "<leader>dr", function() require("dap").repl.open() end, desc = "DAP: Open REPL" },
-			{ "<leader>dt", function() require("dap").terminate() end, desc = "DAP: Terminate" },
-			{ "<leader>du", function() require("dapui").toggle() end, desc = "DAP: Toggle UI" },
+			{
+				"<leader>dB",
+				function()
+					require("dap").toggle_breakpoint()
+				end,
+				desc = "DAP: Toggle Breakpoint",
+			},
+			{
+				"<leader>dc",
+				function()
+					require("dap").continue()
+				end,
+				desc = "DAP: Continue",
+			},
+			{
+				"<leader>ds",
+				function()
+					require("dap").step_over()
+				end,
+				desc = "DAP: Step Over",
+			},
+			{
+				"<leader>di",
+				function()
+					require("dap").step_into()
+				end,
+				desc = "DAP: Step Into",
+			},
+			{
+				"<leader>do",
+				function()
+					require("dap").step_out()
+				end,
+				desc = "DAP: Step Out",
+			},
+			{
+				"<leader>dr",
+				function()
+					require("dap").repl.open()
+				end,
+				desc = "DAP: Open REPL",
+			},
+			{
+				"<leader>dt",
+				function()
+					require("dap").terminate()
+				end,
+				desc = "DAP: Terminate",
+			},
+			{
+				"<leader>du",
+				function()
+					require("dapui").toggle()
+				end,
+				desc = "DAP: Toggle UI",
+			},
 		},
 		config = function()
 			local dap = require("dap")
@@ -42,15 +90,21 @@ return {
 		"leoluz/nvim-dap-go",
 		dependencies = "mfussenegger/nvim-dap",
 		keys = {
-			{ "<leader>dgt", function() require("dap-go").debug_test() end, desc = "DAP: Debug Go Test" },
-			{ "<leader>dgl", function() require("dap-go").debug_last() end, desc = "DAP: Debug Last Go Test" },
+			{
+				"<leader>dgt",
+				function()
+					require("dap-go").debug_test()
+				end,
+				desc = "DAP: Debug Go Test",
+			},
+			{
+				"<leader>dgl",
+				function()
+					require("dap-go").debug_last()
+				end,
+				desc = "DAP: Debug Last Go Test",
+			},
 		},
-		config = function()
-			require("dap-go").setup({
-				delve = {
-					detached = vim.fn.has("win32") == 0,
-				},
-			})
-		end,
+		opts = {},
 	},
 }

@@ -174,6 +174,13 @@ return {
 			end,
 			desc = "Lazygit",
 		},
+		{
+			"<leader>dd",
+			function()
+				Snacks.terminal("lazydocker")
+			end,
+			desc = "Lazydocker",
+		},
 
 		-- Search operations
 		{
