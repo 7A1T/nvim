@@ -54,26 +54,8 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = "menuone,noselect"
 vim.opt.shortmess:append("c")
 
--- Folding
-vim.o.foldenable = true
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldcolumn = '1'
-
--- Set up folding with treesitter and fallbacks
-vim.api.nvim_create_autocmd('FileType', {
-  callback = function()
-    -- Try treesitter folding first
-    local has_treesitter, _ = pcall(vim.treesitter.get_parser, 0)
-    if has_treesitter then
-      vim.wo.foldmethod = 'expr'
-      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    else
-      -- Fallback to indent-based folding for files without treesitter support
-      vim.wo.foldmethod = 'indent'
-    end
-  end,
-})
+-- Folding (configured by treesitter plugin)
+vim.o.foldcolumn = "1"
 
 -- Misc
 vim.o.mouse = "a"

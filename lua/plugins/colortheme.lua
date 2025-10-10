@@ -1,25 +1,39 @@
 return {
 	{
-		"Mofiqul/vscode.nvim",
+		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
 		opts = {
-			-- Alternatively set style in setup
-			style = "dark",
-
-			-- Enable transparent background
+			style = "night",
 			transparent = false,
-
-			-- Enable italic comment
-			italic_comments = true,
-
-			-- Underline `@markup.link.*` variants
-			underline_links = true,
-
-			-- Apply theme colors to terminal
 			terminal_colors = true,
+			styles = {
+				comments = { italic = true },
+				keywords = { italic = true },
+				functions = {},
+				variables = {},
+			},
+			on_highlights = function(hl, c)
+				-- Custom highlight overrides
+				hl.LineNr = { fg = c.fg_gutter }
+			end,
+		},
+		config = function(_, opts)
+			require("tokyonight").setup(opts)
+			vim.cmd.colorscheme("tokyonight")
+		end,
+	},
 
-			-- Override colors (see ./lua/vscode/colors.lua)
+	-- Alternative colorschemes (lazy loaded)
+	{
+		"Mofiqul/vscode.nvim",
+		lazy = true,
+		opts = {
+			style = "dark",
+			transparent = false,
+			italic_comments = true,
+			underline_links = true,
+			terminal_colors = true,
 			color_overrides = {
 				vscLineNumber = "#FFFFFF",
 			},
@@ -27,9 +41,9 @@ return {
 	},
 	{
 		"ellisonleao/gruvbox.nvim",
-		priority = 1000,
+		lazy = true,
 		opts = {
-			terminal_colors = true, -- add neovim terminal colors
+			terminal_colors = true,
 			undercurl = true,
 			underline = true,
 			bold = true,
@@ -43,19 +57,12 @@ return {
 			strikethrough = true,
 			invert_selection = false,
 			invert_signs = false,
-			invert_tabline = false,
-			inverse = true, -- invert background for search, diffs, statuslines and errors
-			contrast = "", -- can be "hard", "soft" or empty string
+			inverse = true,
+			contrast = "",
 			palette_overrides = {},
 			overrides = {},
 			dim_inactive = false,
 			transparent_mode = false,
 		},
-	},
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
 	},
 }

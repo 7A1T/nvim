@@ -4,34 +4,17 @@ return {
 	config = function()
 		local lint = require("lint")
 
-		-- Configure custom linters using Mason-managed tools
-		local mason_bin_dir = vim.fn.stdpath("data") .. "/mason/bin"
+		-- Customize golangcilint to ignore exit codes
+		lint.linters.golangcilint.ignore_exitcode = true
 
-		-- Customize golangcilint to ignore exit codes (golangci-lint exits with code 1-3 when issues are found)
-		local golangcilint = require("lint").linters.golangcilint
-		golangcilint.ignore_exitcode = true
-
-		-- Configure linters by filetype (using Mason-managed tools)
+		-- Configure linters by filetype
 		lint.linters_by_ft = {
-			-- Go
 			go = { "golangcilint" },
-
-			-- Lua
 			lua = { "luacheck" },
-
-			-- Shell
 			sh = { "shellcheck" },
 			bash = { "shellcheck" },
 			zsh = { "shellcheck" },
-
-			-- Make
-			make = { "checkmake" },
-
-			-- Python
 			python = { "ruff" },
-
-			-- You can add more linters here as needed
-			-- rust = { "clippy" },
 		}
 
 		-- Auto-lint on save and text changes
@@ -40,28 +23,33 @@ return {
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			group = lint_augroup,
 			callback = function()
-				-- Only lint if linters are available for this filetype
 				local linters = lint.linters_by_ft[vim.bo.filetype]
 				if linters and #linters > 0 then
 					lint.try_lint()
 				end
 			end,
 		})
-
-		-- Manual linting command
-		vim.keymap.set("n", "<leader>ll", function()
-			lint.try_lint()
-			vim.notify("Linting...", vim.log.levels.INFO, { title = "nvim-lint" })
-		end, { desc = "Trigger linting for current file" })
-
-		-- Show linter status
-		vim.keymap.set("n", "<leader>li", function()
-			local linters = lint.linters_by_ft[vim.bo.filetype] or {}
-			if #linters == 0 then
-				print("No linters configured for filetype: " .. vim.bo.filetype)
-			else
-				print("Linters for " .. vim.bo.filetype .. ": " .. table.concat(linters, ", "))
-			end
-		end, { desc = "Show available linters for current filetype" })
 	end,
+	keys = {
+		{
+			"<leader>ll",
+			function()
+				require("lint").try_lint()
+			end,
+			desc = "Trigger linting",
+		},
+		{
+			"<leader>li",
+			function()
+				local lint = require("lint")
+				local linters = lint.linters_by_ft[vim.bo.filetype] or {}
+				if #linters == 0 then
+					vim.notify("No linters configured for: " .. vim.bo.filetype, vim.log.levels.INFO)
+				else
+					vim.notify("Linters: " .. table.concat(linters, ", "), vim.log.levels.INFO)
+				end
+			end,
+			desc = "Show linters",
+		},
+	},
 }

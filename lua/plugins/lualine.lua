@@ -1,19 +1,19 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	event = "VeryLazy",
+	lazy = false,
+	priority = 1000,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = function()
 		local mode = {
 			"mode",
 			fmt = function(str)
 				return " " .. str
-				-- return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
 			end,
 		}
 
 		local filename = {
 			"filename",
-			file_status = true, -- displays file status (readonly status, modified status)
+			file_status = true,
 			path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
 		}
 
@@ -35,16 +35,13 @@ return {
 		local diff = {
 			"diff",
 			colored = false,
-			symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+			symbols = { added = " ", modified = " ", removed = " " },
 			cond = hide_in_width,
 		}
 
 		return {
 			options = {
 				icons_enabled = true,
-				-- Some useful glyphs:
-				-- https://www.nerdfonts.com/cheat-sheet
-				--
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 				disabled_filetypes = { "alpha", "neo-tree" },
