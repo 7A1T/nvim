@@ -1,0 +1,1 @@
+/home/tait/.config/omarchy/current/theme/neovim.lua

@@ -1,3 +1,12 @@
-CLAUDE.md
-.claude
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+.claude/settings.local.json
 lazy-lock.json
+LICENSE
+README.md
