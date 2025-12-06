@@ -5,6 +5,8 @@ return {
       enabled = false, -- Disable scrolling animations
     },
     picker = {
+      -- exclude vendor directories
+      exclude = { "node_modules", "vendor", "dist", "build" },
       actions = {
         sidekick_send = function(...)
           return require("sidekick.cli.snacks").send(...)
